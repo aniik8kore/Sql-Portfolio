@@ -1,93 +1,120 @@
-# SQL Portfolio — Project 1: Student Grades Tracker
+# SQL Portfolio — Project 2: E-Commerce Sales Analysis
 
 ## Overview
-A beginner SQL project analyzing student performance data using PostgreSQL.  
-Covers JOIN, GROUP BY, AVG, COUNT, WHERE, subqueries, and ORDER BY.
+An intermediate SQL project analyzing e-commerce sales data using PostgreSQL.  
+Covers JOIN, GROUP BY, HAVING, LEFT JOIN, DATE_TRUNC, subqueries, and Window Functions.
 
 ---
 
 ## Schema
 
-**Table 1: students**
+**Table 1: customers**
 | Column | Type | Description |
 |---|---|---|
-| student_id | SERIAL PK | Unique student ID |
-| name | VARCHAR | Student name |
-| age | INT | Age |
+| customer_id | SERIAL PK | Unique customer ID |
+| name | VARCHAR | Customer name |
 | city | VARCHAR | City |
+| signup_date | DATE | Date of signup |
 
-**Table 2: grades**
+**Table 2: orders**
 | Column | Type | Description |
 |---|---|---|
-| grade_id | SERIAL PK | Unique grade ID |
-| student_id | INT FK | References students |
-| subject | VARCHAR | Subject name |
-| marks | INT | Marks scored |
+| order_id | SERIAL PK | Unique order ID |
+| customer_id | INT FK | References customers |
+| product | VARCHAR | Product name |
+| amount | DECIMAL | Order amount (₹) |
+| order_date | DATE | Date of order |
 
 ---
 
 ## Business Questions & Queries
 
-### Q1 — All students with subject-wise marks
+### Q1 — All customers with their orders
 ```sql
-SELECT students.name, grades.subject, grades.marks
-FROM students
-JOIN grades ON students.student_id = grades.student_id;
+SELECT customers.name, orders.product, orders.amount
+FROM customers
+INNER JOIN orders ON customers.customer_id = orders.customer_id;
 ```
 
-### Q2 — Average marks per student (highest to lowest)
+### Q2 — Total revenue per customer (highest to lowest)
 ```sql
-SELECT students.name, AVG(grades.marks) AS avg_marks
-FROM students
-JOIN grades ON students.student_id = grades.student_id
-GROUP BY students.name
-ORDER BY avg_marks DESC;
+SELECT customers.name, SUM(orders.amount) AS total_revenue
+FROM customers
+INNER JOIN orders ON customers.customer_id = orders.customer_id
+GROUP BY customers.name
+ORDER BY total_revenue DESC;
 ```
 
-### Q3 — Students who scored above 75 in any subject
+### Q3 — Customers who spent more than ₹50,000 total
 ```sql
-SELECT students.name, grades.marks
-FROM students
-JOIN grades ON students.student_id = grades.student_id
-WHERE grades.marks > 75;
+SELECT customers.name, SUM(orders.amount) AS total_revenue
+FROM customers
+INNER JOIN orders ON customers.customer_id = orders.customer_id
+GROUP BY customers.name
+HAVING SUM(orders.amount) > 50000
+ORDER BY total_revenue DESC;
 ```
+**Result:** 6 customers — led by Ritika Bhosale (₹87,500)
 
-### Q4 — Student with the highest overall average
+### Q4 — Best selling product by total revenue
 ```sql
-SELECT students.name, AVG(grades.marks) AS avg_marks
-FROM students
-JOIN grades ON students.student_id = grades.student_id
-GROUP BY students.name
-ORDER BY avg_marks DESC
+SELECT orders.product, SUM(orders.amount) AS total_revenue
+FROM orders
+GROUP BY orders.product
+ORDER BY total_revenue DESC
 LIMIT 1;
 ```
-**Result:** Ritika Bhosale — 92.00
+**Result:** Laptop — ₹2,90,000
 
-### Q5 — Count of subjects each student appeared in
+### Q5 — Monthly revenue trend
 ```sql
-SELECT students.name, COUNT(grades.subject) AS total_subjects
-FROM students
-JOIN grades ON students.student_id = grades.student_id
-GROUP BY students.name;
+SELECT DATE_TRUNC('month', order_date) AS month,
+       SUM(amount) AS revenue
+FROM orders
+GROUP BY DATE_TRUNC('month', order_date)
+ORDER BY month;
 ```
 
-### Q6 — Students from Kolhapur with marks above overall average
+### Q6 — Top 3 customers by total spending
 ```sql
-SELECT students.name, grades.marks
-FROM students
-JOIN grades ON students.student_id = grades.student_id
-WHERE students.city = 'Kolhapur'
-AND grades.marks > (SELECT AVG(marks) FROM grades);
+SELECT customers.name, SUM(orders.amount) AS total_revenue
+FROM customers
+INNER JOIN orders ON customers.customer_id = orders.customer_id
+GROUP BY customers.name
+ORDER BY total_revenue DESC
+LIMIT 3;
+```
+**Result:** Ritika Bhosale, Pooja Shinde, Siddharth Kadam
+
+### Q7 — Customers who never placed an order
+```sql
+SELECT customers.name, orders.product
+FROM customers
+LEFT JOIN orders ON customers.customer_id = orders.customer_id
+WHERE orders.product IS NULL;
+```
+**Result:** Yash Gaikwad, Pallavi Desai
+
+### Q8 — Rank customers by total spending (Window Function)
+```sql
+SELECT customers.name,
+       SUM(orders.amount) AS total_revenue,
+       RANK() OVER (ORDER BY SUM(orders.amount) DESC) AS rank
+FROM customers
+INNER JOIN orders ON customers.customer_id = orders.customer_id
+GROUP BY customers.name;
 ```
 
 ---
 
 ## Concepts Used
-- INNER JOIN across two tables
-- GROUP BY with aggregate functions (AVG, COUNT)
-- WHERE clause filtering
-- Subquery for dynamic average comparison
-- ORDER BY + LIMIT for ranking
+- INNER JOIN and LEFT JOIN
+- GROUP BY with SUM aggregation
+- HAVING for post-aggregation filtering
+- DATE_TRUNC for monthly grouping
+- RANK() window function
+- ORDER BY + LIMIT for top-N queries
+- NULL filtering for missing data
 
 ---
 
@@ -98,4 +125,4 @@ AND grades.marks > (SELECT AVG(marks) FROM grades);
 ---
 
 ## Author
-**Aniket kore** — SQL Portfolio Project 1 of 5
+**Aniket Kore** — SQL Portfolio Project 2 of 5
