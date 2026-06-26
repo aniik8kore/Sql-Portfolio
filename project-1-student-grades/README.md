@@ -98,4 +98,4 @@ AND grades.marks > (SELECT AVG(marks) FROM grades);
 ---
 
 ## Author
-**Aniket Patil** — SQL Portfolio Project 1 of 5
+**Aniket Kore** — SQL Portfolio Project 1 of 5
