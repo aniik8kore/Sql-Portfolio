@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&pause=1000&color=00B4D8&center=true&vCenter=true&width=700&lines=SQL+Portfolio+%E2%80%94+Aniket+Kore;Turning+Raw+Data+into+Business+Decisions;Built+with+PostgreSQL+%C2%B7+pgAdmin;Growing+Daily+%F0%9F%9A%80" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&pause=1000&color=00B4D8&center=true&vCenter=true&width=700&lines=SQL+Portfolio+%E2%80%94+Aniket+Kore;Bridging+Business+Problems+with+Data+Solutions;Built+with+PostgreSQL+%C2%B7+pgAdmin;Growing+Daily+%F0%9F%9A%80" alt="Typing SVG" />
 
 <br/>
 
@@ -8,7 +8,7 @@
 ![Status](https://img.shields.io/badge/Status-Active-00B4D8?style=for-the-badge)
 ![Projects](https://img.shields.io/badge/Projects-Ongoing-blueviolet?style=for-the-badge)
 
-> *"Data is just stories waiting to be told."*
+> *"Data is just stories waiting to be told — I translate them into business decisions."*
 
 </div>
 
@@ -16,7 +16,13 @@
 
 ## 👋 About
 
-A collection of **real-world SQL projects** built while mastering PostgreSQL. Each project tackles a different business problem with increasing complexity — from tracking student performance to analyzing subscription cohorts. Every query is written from scratch. No shortcuts.
+I'm an **MBA student** building a portfolio that bridges **business strategy** with **data-driven problem solving**. Each project here starts with a real business question, not just a dataset.
+
+**My approach:**
+1. **Understand the business problem** — What decision needs to be made? Who's asking?
+2. **Translate to data requirements** — What metrics, segments, and timeframes matter?
+3. **Write clean SQL** — Queries that are readable, optimized, and explainable to stakeholders.
+4. **Deliver actionable insights** — Not just numbers, but recommendations.
 
 This repo is a living portfolio — new projects get added as I build them.
 
@@ -24,14 +30,14 @@ This repo is a living portfolio — new projects get added as I build them.
 
 ## 📂 Projects at a Glance
 
-| # | Project | Business Problem | Difficulty |
-|---|---------|-----------------|------------|
-| 01 | [🎓 Student Grades Tracker](./project-1-student-grades-tracker) | Track & analyze academic performance across subjects | ⭐ Beginner |
-| 02 | [🛒 E-Commerce Sales Analysis](./project-2-ecommerce-sales-analysis) | Revenue trends, top products & customer behaviour | ⭐⭐ Intermediate |
-| 03 | [👥 HR Employee Analysis](./project-3-hr-employee-analysis) | Workforce insights, attrition patterns & dept. headcount | ⭐⭐ Intermediate |
-| 04 | [🏦 Bank Transaction Analysis](./project-4-bank-transaction-analysis) | Transaction patterns, fraud signals & customer segmentation | ⭐⭐⭐ Advanced |
-| 05 | [📊 Data Cleaning & Analysis](./project-5-retail-sales) | Real-world messy data cleaning, standardization & insights | ⭐⭐⭐ Advanced |
-| 06 | [📺 Subscription Cohort Analysis](./project-6-subscription-cohort-analysis) | Cohort retention, churn & payment failure analysis for a subscription service | ⭐⭐⭐ Advanced |
+| # | Project | Business Problem | BA Skills Applied | Difficulty |
+|---|---------|-----------------|-------------------|------------|
+| 01 | [🎓 Student Grades Tracker](./project-1-student-grades-tracker) | Track & analyze academic performance across subjects | Requirement definition, KPI design | ⭐ Beginner |
+| 02 | [🛒 E-Commerce Sales Analysis](./project-2-ecommerce-sales-analysis) | Revenue trends, top products & customer behaviour | Stakeholder reporting, trend analysis | ⭐⭐ Intermediate |
+| 03 | [👥 HR Employee Analysis](./project-3-hr-employee-analysis) | Workforce insights, attrition patterns & dept. headcount | Process mapping, attrition modeling | ⭐⭐ Intermediate |
+| 04 | [🏦 Bank Transaction Analysis](./project-4-bank-transaction-analysis) | Transaction patterns, fraud signals & customer segmentation | Risk analysis, segmentation strategy | ⭐⭐⭐ Advanced |
+| 05 | [📊 Data Cleaning & Analysis](./project-5-retail-sales) | Real-world messy data cleaning, standardization & insights | Data quality assessment, ETL logic | ⭐⭐⭐ Advanced |
+| 06 | [📺 Subscription Cohort Analysis](./project-6-subscription-cohort-analysis) | Cohort retention, churn & payment failure analysis for a subscription service | Cohort tracking, churn prediction, retention strategy | ⭐⭐⭐ Advanced |
 
 > More projects dropping soon — follow to stay updated.
 
@@ -64,6 +70,18 @@ Concepts    →  Joins · Aggregations · Window Functions · CTEs
 
 ---
 
+## 🧩 Business Analysis Skills Demonstrated
+
+| Skill | How It's Applied |
+|-------|----------------|
+| **Requirement Gathering** | Every project starts with a clear business question and stakeholder need |
+| **Process Mapping** | Understanding data flow from source → transformation → insight |
+| **KPI Design** | Defining the right metrics to measure business health |
+| **Stakeholder Communication** | Writing queries and summaries that non-technical audiences can understand |
+| **Data-Driven Decision Making** | Turning raw data into actionable business recommendations |
+
+---
+
 ## 📈 Learning Path
 
 ```
@@ -75,6 +93,7 @@ Concepts    →  Joins · Aggregations · Window Functions · CTEs
 ✅ Set Operations
 ✅ Advanced Optimisation & Indexing
 ✅ Cohort & Retention Analysis
+🔄 Business Process Mapping & Requirement Documentation
 🔄 Next project — in progress
 ```
 
